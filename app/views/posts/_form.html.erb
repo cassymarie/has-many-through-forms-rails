@@ -7,8 +7,14 @@
   <%= f.label "Content" %>
   <%= f.text_area :content %>
   <%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+
+  <%# 
+    Creating new Categories
+    - 'fields_for' takes two arguments: the associated model that we're creating and an object to wrap around. 
+  %>
   <%= f.fields_for :categories, post.categories.build do |categories_fields| %>
     <%= categories_fields.text_field :name %>
   <% end %>
+
   <%= f.submit %>
 <% end %>
